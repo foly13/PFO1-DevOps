@@ -7,6 +7,55 @@
     <title>PFO 1</title>
 </head>
 <body>
-   
+    <h1>Ingreso de datos personales</h1>
+    <form id="formularioUsuario">
+        <label for="nombreUsuario">Nombre de usuario:</label>
+        <input type="text" id="nombreUsuario" name="nombreUsuario" placeholder="Ejemplo: Homero Simpsons" required><br><br>
+    
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" required><br><br>
+    
+        <button type="submit">Enviar</button>
+    </form>
+    <script>
+        // Cuando se envía el formulario, se capturan los datos y se hace una "llamada AJAX"
+          document.getElementById('formularioUsuario').addEventListener('submit', function(event) {
+          event.preventDefault(); // evita que se recargue la página
+    
+          const datos = {
+            nombreUsuario: document.getElementById('nombreUsuario').value,
+            contrasenia: document.getElementById('contrasenia').value
+          };
+    
+          // Simulación de una llamada al backend usando fetch
+          fetch('guardar_usuario.php', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(datos)
+          })
+          .then(response => response.json())
+          .then(data => {
+            console.log('Respuesta del servidor:', data);
+            alert('Datos enviados correctamente');
+          })
+          .catch(error => {
+            console.error('Error al enviar los datos:', error);
+          });
+    
+          /*
+            📌 Documentación de la llamada:
+            URL: 'guardar_usuario.php'
+            Método: POST
+            Headers: Content-Type: application/json
+            Body:
+            {
+             "nombreUsuario": "valor_del_usuario",
+             "contrasenia": "valor_de_contrasenia"
+            }
+          */
+        });
+    </script>
 </body>
 </html>
