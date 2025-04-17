@@ -8,11 +8,11 @@
 <body>
     <h1>Ingreso de datos personales</h1>
     <form id="formularioUsuario">
-        <label for="nombreUsuario">Nombre de usuario:</label>
-        <input type="text" id="nombreUsuario" name="nombreUsuario" required><br><br>
+        <label for="usuarioNombre">Nombre de usuario:</label>
+        <input type="text" id="usuarioNombre" name="nombreUsuario" placeholder="Ingresá tu usuario" required><br><br>
     
         <label for="contrasenia">Contraseña:</label>
-        <input type="password" id="contrasenia" name="contrasenia" required><br><br>
+        <input type="password" id="contrasenia" name="contrasenia" placeholder="Ingresá tu contraseña" required><br><br>
     
         <button type="submit">Enviar</button>
     </form>
@@ -22,7 +22,7 @@
           event.preventDefault(); // evita que se recargue la página
     
           const datos = {
-            nombreUsuario: document.getElementById('nombreUsuario').value,
+            nombreUsuario: document.getElementById('usuarioNombre').value,
             contrasenia: document.getElementById('contrasenia').value
           };
     
